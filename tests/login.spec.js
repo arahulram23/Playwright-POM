@@ -14,6 +14,7 @@ test('login test locked user', async ({ page }) => {
     const loginPage = new LoginPage(page)
     await loginPage.goToLoginPage()
     await loginPage.login('locked_out_user','secret_sauce')
+    await expect(page).toHaveURL('https://www.saucedemo.com/v1')
     await loginPage.clickBag()  
   
 })
@@ -27,7 +28,8 @@ test('login test problem user', async ({ page }) => {
 test('login test performance glitch user', async ({ page }) => {
     const loginPage = new LoginPage(page)
     await loginPage.goToLoginPage()
-    await loginPage.login('performance_glitch_user','secret_sauce') 
+    await loginPage.login('performance_glitch_user','secret_sauce')
+    await expect(page).toHaveURL('https://www.saucedemo.com/v1/inventory.html') 
     
 })
 test('login test invalid user', async ({ page }) => {
